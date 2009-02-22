@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.view.View;
 import android.view.MotionEvent;
 import android.util.DisplayMetrics;
-
+import android.graphics.Paint;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 
@@ -22,6 +22,8 @@ public class Ruler extends Activity implements Button.OnClickListener
     private double sumX, lastUpdate;
     ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_RING, 70);
     int lastmm;
+
+    static Paint paint = new Paint(), textPaint = new Paint();
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +40,16 @@ public class Ruler extends Activity implements Button.OnClickListener
         xdpmm = dm.xdpi / 25.4f;
 	ydpmm = dm.ydpi / 25.4f;
 	reset();
+
+	paint.setStyle(Paint.Style.STROKE);
+	paint.setStrokeWidth(0);
+	paint.setAntiAlias(false);
+	paint.setColor(0xff000000);
+	
+	textPaint.setStyle(Paint.Style.STROKE);
+	textPaint.setStrokeWidth(0);
+	textPaint.setAntiAlias(true);
+	textPaint.setColor(0xff000000);
     }
 
     private void reset() {
