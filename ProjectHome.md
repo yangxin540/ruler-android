@@ -1,0 +1,1 @@
+Ruler: helps to measure length, on Android.
